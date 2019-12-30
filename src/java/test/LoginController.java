@@ -10,6 +10,7 @@ package test;
  * @author Admin
  */
 //import org.springframework.web.servlet.mvc.Controller;
+import DAO.ConnectDB;
 import Model.User;
 import org.springframework.web.servlet.ModelAndView; 
 import javax.servlet.ServletException;
@@ -18,35 +19,40 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory; 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDateTime;
-import java.util.Date; 
 import org.springframework.ui.ModelMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(value="/login")
 public class LoginController  {
-    
     //@RequestMapping(method = RequestMethod.GET)
-    @RequestMapping()
-    public String login1(ModelMap model){
-        String now = LocalDateTime.now().toString();
-        model.addAttribute("now",123);
-        return "Account/login";
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login1(ModelMap modal){
+        modal.addAttribute("abc","string");
+        return "/Account/login";
     }
-    @RequestMapping(value="/check",method = RequestMethod.POST)
-    public String checkLogin(@ModelAttribute("emp") User emp){
-        String now = LocalDateTime.now().toString();
-        
-        return "Account/login";
+    @RequestMapping(value= "/check", method = RequestMethod.POST)
+    public String check(@ModelAttribute("User")User us){
+        try {
+            Connection connection = ConnectDB.getConnection();
+            Statement stmt = ConnectDB.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery("select * from users");
+            while (rs.next()) {
+                  if(rs.getString("EMAIL") == us.getEmail() && rs.getString("PASSWORD_") == us.getPassword())
+                      return "redirect:/home.htm";
+            }
+            connection.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return "redirect:/login.htm";
     }
-    //protected final Log logger = LogFactory.getLog(getClass()); 
-    //public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
-    //        throws ServletException, IOException { 
-    //    String now = (new Date()).toString();
-    //    logger.info("Returning hello view with " + now); 
-    //    return new ModelAndView("WEB-INF/jsp/hello.jsp", "now", now);
-    //} 
+    
 }
 

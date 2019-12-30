@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Hello - Spring Application</h1>
-    <p>Greetings, it is now ${now}</p>
+    <p>Greetings, it is now ${string}</p>
     </body>
 </html>
 <%-- 
