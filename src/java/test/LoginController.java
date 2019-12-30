@@ -38,7 +38,7 @@ public class LoginController  {
         return "/Account/login";
     }
     @RequestMapping(value= "/check", method = RequestMethod.POST)
-    public String check(@ModelAttribute("User")User us){
+    public String checkLogin(@ModelAttribute("User")User us){
         try {
             Connection connection = ConnectDB.getConnection();
             Statement stmt = ConnectDB.getConnection().createStatement();

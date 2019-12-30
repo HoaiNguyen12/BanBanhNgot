@@ -3,15 +3,14 @@
     Created on : Dec 24, 2019, 10:22:54 PM
     Author     : Admin
 --%>
-
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <title>Login</title>
-        <meta charset="UTF-8">
+        <title>Login</title
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <!--===============================================================================================-->
@@ -23,19 +22,14 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="resources/Login/material-design-iconic-font.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="resources/Login/animate/animate.css">
     <link href="resources/Login/animate.css" rel="stylesheet" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="resources/Login/css-hamburgers/hamburgers.min.css">
     <link href="resources/Login/hamburgers.min.css" rel="stylesheet" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="resources/Login/animsition.min.css">
     <link href="resources/Login/animsition.min.css" rel="stylesheet" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="resources/Login/select2/select2.min.css">
     <link href="resources/Login/select2.min.css" rel="stylesheet" />
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="resources/Login/daterangepicker/daterangepicker.css">
     <link href="resources/Login/daterangepicker.css" rel="stylesheet" />
     <!--===============================================================================================-->
     <link href="resources/Login/util.css" rel="stylesheet" />
@@ -50,7 +44,7 @@
         <section id="loginForm">
             <!-- @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             { -->
-            <form class="form-horizontal" action="login/check" method="Post">
+            <form class="form-horizontal" action="check.htm" modelAttribute="User" method="POST">
                 <!--@Html.AntiForgeryToken()
                 <h4>Use a local account to log in.</h4>-->
                 <h4>Đăng nhập</h4>
@@ -60,7 +54,7 @@
                     <!--@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })-->
                     <p class="col-md-4 control-label">Email</p>
                     <div class="col-md-12">
-                        <input type="text" label='Email' required path="Email" class="form-control">
+                        <input type="text" required name="Email" class="form-control">
                         <!--@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })-->
                         <!--@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })-->
                     </div>
@@ -69,7 +63,7 @@
                     <!--@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })-->
                     <p class="col-md-4 control-label">Password</p>
                     <div class="col-md-12">
-                        <input type="password" path="Password" class="form-control">
+                        <input type="password" required name="Password" class="form-control">
                         <!--@Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })-->
                     </div>

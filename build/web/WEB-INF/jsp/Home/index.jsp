@@ -3,7 +3,7 @@
     Created on : Dec 30, 2019, 10:51:18 AM
     Author     : Admin
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,8 +16,8 @@
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="resources/Home/css/font-awesome.min.css">
         <link rel="stylesheet" href="resources/Home/colorbox.css">
-         <link rel="stylesheet" href="resources/css1/settings.css">
-         <link rel="stylesheet" href="resources/css1/responsive.css">
+        <link rel="stylesheet" href="resources/css1/settings.css">
+        <link rel="stylesheet" href="resources/css1/responsive.css">
         <link rel="stylesheet" title="style" href="resources/Home/css/style.css">
         <link rel="stylesheet" href="resources/Home/css/animate.css">
         <link rel="stylesheet" title="style" href="resources/Home/css/huong-style.css">
@@ -37,66 +37,66 @@
                             <div class="clearfix"></div>
                         </div>
 
-                        <!--<div class="row">
-                            @foreach (var item in Model)
-                            {
+                        <div class="row">
+                         <c:forEach var="item" items="${list}">
+                            
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header">
-                                            <a href="#"><img src="@Url.Content("resources/ImageProduct/"+item.IMAGE)" alt="" width="260" height="250"></a>
+                                            <a href="#"><img src="${item.getImage()}" alt="" width="260" height="250"></a>
                                         </div>
                                         <div class="single-item-body">
-                                            <p class="single-item-title">@item.NAME_PR</p>
+                                            <p class="single-item-title">${item.getName_Pr()}</p>
                                             <p class="single-item-price">
-                                                <span class="flash-del">@item.PRICE_OLD</span>
-                                                <span class="flash-sale">@item.PRICE</span>
+                                                <span class="flash-del">${item.getPrice_Old()}</span>
+                                                <span class="flash-sale">${item.getPrice()}</span>
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
-                                            <a class="add-to-cart pull-left" href="/ShoppingCart/Add/@item.ID_PR"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                                            <a class="beta-btn primary" href="@Url.Action("Detail","Product_Detail",new {id = @item.ID_PR })">Xem chi tiết  <i class="glyphicon glyphicon-chevron-right"></i></a>
+                                            <a class="add-to-cart pull-left" href="/detail/@item.ID_PR"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+                                            <a class="beta-btn primary" href="detail/${item.getId_Pr()}.htm">Xem chi tiết  <i class="glyphicon glyphicon-chevron-right"></i></a>
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
                                 </div>
-                            }
-                        </div>-->
+                        </c:forEach>
+                            
+                        </div>
                         <div class="row">
                             <div class="pagination">
-                                <!--@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))-->
+                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
                             </div>
                         </div>
                     </div> <!-- .beta-products-list -->
                     <div class="space50">&nbsp;</div>
 
                     <div class="beta-products-list">
-                        <h4>Sản phẩm khuyến mãi</h4>
+                        <h4>Sản phẩm được đề suất</h4>
                         <div class="beta-products-details">
                             <div class="clearfix"></div>
                         </div>
                         <div class="row">
-                            @foreach (var item in list)
-                            {
+                            <c:forEach var="hot" items="${listHot}">
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header">
-                                            <a href="#"><img src="@Url.Content("resources/ImageProduct/"+item.IMAGE)" alt="" width="260" height="250"></a>
+                                            <a href="#"><img src="${hot.getImage()}" alt="" width="260" height="250"></a>
                                         </div>
                                         <div class="single-item-body">
-                                            <p class="single-item-title">@item.NAME_PR</p>
+                                            <p class="single-item-title">${hot.getName_Pr()}</p>
                                             <p class="single-item-price">
-                                                <span class="flash-del">@item.PRICE_OLD</span>
-                                                <span class="flash-sale">@item.PRICE</span>
+                                                <span class="flash-del">${hot.getPrice_Old()}</span>
+                                                <span class="flash-sale">${hot.getPrice()}</span>
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
                                             <a class="add-to-cart pull-left" href="/ShoppingCart/Add/@item.ID_PR"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                                            <a class="beta-btn primary" href="@Url.Action("Detail","Product_Detail",new {id = @item.ID_PR })">Xem chi tiết <i class="glyphicon glyphicon-chevron-right"></i></a>
+                                            <a class="beta-btn primary" href="${hot.getImage()}">Xem chi tiết <i class="glyphicon glyphicon-chevron-right"></i></a>
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
                                 </div>
-                            }
+                            </c:forEach>
                         </div>
                         <div class="row">
                             <div class="pagination">
