@@ -27,7 +27,7 @@ public class ProductController {
     @RequestMapping(value="detail/{id}",method=RequestMethod.GET)    
     public String detailProduct(@PathVariable("id") int id, Model m){    
         Product pr = dao.getDetail(id);
-        m.addAttribute("logo","../resources/Home/images/logo-cake.png");
+        m.addAttribute("logo","/resources/Home/images/logo-cake.png");
         List<Product> list = dao.getProducts("hot");
         m.addAttribute("listHot",list);  
         list = dao.getProducts("new");
@@ -40,7 +40,7 @@ public class ProductController {
     
     @RequestMapping(value="products/{id}",method=RequestMethod.GET)    
     public String productsOfType(@PathVariable("id") int id, Model m){  
-        m.addAttribute("logo","../resources/Home/images/logo-cake.png");
+        m.addAttribute("logo","/resources/Home/images/logo-cake.png");
         List<Product> list = dao.getAllProducts(" where id_type = " + id);
         m.addAttribute("list",list);   
         List<TypeProduct> lType = Tdao.getAllType();

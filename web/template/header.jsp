@@ -18,7 +18,7 @@
                 <ul class="top-details menu-beta l-inline">
                     <li><a href="#"><i class="glyphicon glyphicon-user"></i>Tài khoản</a></li>
                     <li><a href="#">Đăng kí</a></li>
-                    <li><a href="/User/Login">Đăng nhập</a></li>
+                    <li><a href="${pageContext.request.contextPath}/login.htm">Đăng nhập</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -27,7 +27,7 @@
     <div class="header-body">
         <div class="container beta-relative">
             <div class="pull-left">
-                <a href="${pageContext.request.contextPath}/home.htm" id="logo"><img src="${logo}" width="200" alt=""></a>
+                <a href="${pageContext.request.contextPath}/home.htm" id="logo"><img src="${pageContext.request.contextPath}/${logo}" width="200" alt=""></a>
             </div>
             <div class="pull-right beta-components space-left ov">
                 <div class="space10">&nbsp;</div>

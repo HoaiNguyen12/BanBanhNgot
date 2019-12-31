@@ -38,13 +38,13 @@ public class LoginController  {
         return "/Account/login";
     }
     @RequestMapping(value= "/check", method = RequestMethod.POST)
-    public String checkLogin(@ModelAttribute("User")User us){
+    public String checkLogin(@ModelAttribute("User") User us){
         try {
             Connection connection = ConnectDB.getConnection();
             Statement stmt = ConnectDB.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery("select * from users");
             while (rs.next()) {
-                  if(rs.getString("EMAIL") == us.getEmail() && rs.getString("PASSWORD_") == us.getPassword())
+                  if(rs.getString("EMAIL").equalsIgnoreCase(us.getEmail()) && rs.getString("PASSWORD_").equals(us.getPassword()))
                       return "redirect:/home.htm";
             }
             connection.close();

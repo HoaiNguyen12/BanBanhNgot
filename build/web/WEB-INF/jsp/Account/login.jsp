@@ -44,7 +44,7 @@
         <section id="loginForm">
             <!-- @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             { -->
-            <form class="form-horizontal" action="check.htm" modelAttribute="User" method="POST">
+            <form class="form-horizontal" action="${pageContext.request.contextPath}/check.htm" modelAttribute="User" method="POST">
                 <!--@Html.AntiForgeryToken()
                 <h4>Use a local account to log in.</h4>-->
                 <h4>Đăng nhập</h4>

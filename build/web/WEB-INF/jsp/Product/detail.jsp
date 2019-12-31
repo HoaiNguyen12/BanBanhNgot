@@ -15,19 +15,19 @@
         <link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../resources/Home/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../resources/Home/colorbox.css">
-        <link rel="stylesheet" href="../resources/css1/settings.css">
-        <link rel="stylesheet" href="../resources/css1/responsive.css">
-        <link rel="stylesheet" title="style" href="../resources/Home/css/style.css">
-        <link rel="stylesheet" href="../resources/Home/css/animate.css">
-        <link rel="stylesheet" title="style" href="../resources/Home/css/huong-style.css">
-        <link href="../resources/PagedList.css" rel="stylesheet" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/Home/css/font-awesome.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/Home/colorbox.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css1/settings.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css1/responsive.css">
+        <link rel="stylesheet" title="style" href="${pageContext.request.contextPath}/resources/Home/css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/Home/css/animate.css">
+        <link rel="stylesheet" title="style" href="${pageContext.request.contextPath}/resources/Home/css/huong-style.css">
+        <link href="${pageContext.request.contextPath}/resources/PagedList.css" rel="stylesheet" />
         
-        <link href="../resources/Admin/vendor.bundle.addons.css" rel="stylesheet" />
-        <link href="../resources/Admin/vendor.bundle.base.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/resources/Admin/vendor.bundle.addons.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/resources/Admin/vendor.bundle.base.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-        <link rel="stylesheet" href="../resources/Admin/fonts/materialdesignicons.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/Admin/fonts/materialdesignicons.min.css">
     </head>
     <body>
         <%@ include file="/template/header.jsp" %>
@@ -51,7 +51,7 @@
             <div class="col-sm-9">
                 <div class="row">
                     <div class="col-sm-4">
-                        <img src="${item.getImage()}" alt="" height="270">
+                        <img src="${pageContext.request.contextPath}/${item.getImage()}" alt="" height="270">
                     </div>
                     <div class="col-sm-8">
                         <div class="single-item-body">
@@ -100,7 +100,7 @@
                         <div class="beta-sales beta-lists">
                             <c:forEach var="hot" items="${listHot}">
                                 <div class="media beta-sales-item">
-                                    <a class="pull-left" href="Product"><img src="${hot.getImage()}" alt="" width="260" height="250"></a>
+                                    <a class="pull-left" href="Product"><img src="${pageContext.request.contextPath}/${hot.getImage()}" alt="" width="260" height="250"></a>
                                     <div class="media-body">
                                         <p>${hot.getName_Pr()}</p> 
                                         <span class="beta-sales-price">${hot.getPrice()}</span>
@@ -116,7 +116,7 @@
                         <div class="beta-sales beta-lists">
                             <c:forEach var="new" items="${listNew}">
                                 <div class="media beta-sales-item">
-                                    <a class="pull-left" href="Product"><img src="${new.getImage()}" alt="" width="260" height="250"></a>
+                                    <a class="pull-left" href="Product"><img src="${pageContext.request.contextPath}/${new.getImage()}" alt="" width="260" height="250"></a>
                                     <div class="media-body">
                                         <p>${new.getName_Pr()}</p>
                                         <span class="beta-sales-price">${new.getPrice()}</span>

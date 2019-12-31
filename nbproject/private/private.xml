@@ -5,12 +5,13 @@
         <group>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/test/ProductController.java</file>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/WEB-INF/jsp/Product/detail.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/WEB-INF/jsp/Home/products.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/WEB-INF/jsp/Account/login.jsp</file>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/DAO/TypeProductDAO.java</file>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/test/HomeController.java</file>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/template/header.jsp</file>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/WEB-INF/jsp/Home/index.jsp</file>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/DAO/ProductDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/test/LoginController.java</file>
         </group>
     </open-files>
 </project-private>

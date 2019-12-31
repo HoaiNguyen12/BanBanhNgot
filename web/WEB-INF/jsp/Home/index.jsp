@@ -43,7 +43,7 @@
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header">
-                                            <a href="#"><img src="${item.getImage()}" alt="" width="260" height="250"></a>
+                                            <a href="#"><img src="${pageContext.request.contextPath}/${item.getImage()}" alt="" width="260" height="250"></a>
                                         </div>
                                         <div class="single-item-body">
                                             <p class="single-item-title">${item.getName_Pr()}</p>
@@ -80,7 +80,7 @@
                                 <div class="col-sm-3">
                                     <div class="single-item">
                                         <div class="single-item-header">
-                                            <a href="#"><img src="${hot.getImage()}" alt="" width="260" height="250"></a>
+                                            <a href="#"><img src="${pageContext.request.contextPath}/${hot.getImage()}" alt="" width="260" height="250"></a>
                                         </div>
                                         <div class="single-item-body">
                                             <p class="single-item-title">${hot.getName_Pr()}</p>
