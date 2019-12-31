@@ -14,14 +14,14 @@
         <link href='http://fonts.googleapis.com/css?family=Dosis:300,400' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="resources/Home/css/font-awesome.min.css">
-        <link rel="stylesheet" href="resources/Home/colorbox.css">
-        <link rel="stylesheet" href="resources/css1/settings.css">
-        <link rel="stylesheet" href="resources/css1/responsive.css">
-        <link rel="stylesheet" title="style" href="resources/Home/css/style.css">
-        <link rel="stylesheet" href="resources/Home/css/animate.css">
-        <link rel="stylesheet" title="style" href="resources/Home/css/huong-style.css">
-        <link href="resources/PagedList.css" rel="stylesheet" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/Home/css/font-awesome.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/Home/colorbox.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css1/settings.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css1/responsive.css">
+        <link rel="stylesheet" title="style" href="${pageContext.request.contextPath}/resources/Home/css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/Home/css/animate.css">
+        <link rel="stylesheet" title="style" href="${pageContext.request.contextPath}/resources/Home/css/huong-style.css">
+        <link href="${pageContext.request.contextPath}/resources/PagedList.css" rel="stylesheet" />
     </head>
     <body>
         <%@ include file="/template/header.jsp" %>

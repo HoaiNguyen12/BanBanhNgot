@@ -23,7 +23,6 @@ public class HomeController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(Model model){
         ProductDAO prDAO = new ProductDAO();
-        model.addAttribute("logo","resources/Home/images/logo-cake.png");
         List<Product> list = prDAO.getAllProducts("");
         model.addAttribute("list",list);
         list = prDAO.getAllProducts("where hot = 1");

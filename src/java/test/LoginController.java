@@ -34,7 +34,6 @@ public class LoginController  {
     //@RequestMapping(method = RequestMethod.GET)
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login1(ModelMap modal){
-        modal.addAttribute("abc","string");
         return "/Account/login";
     }
     @RequestMapping(value= "/check", method = RequestMethod.POST)

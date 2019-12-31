@@ -27,7 +27,7 @@
     <div class="header-body">
         <div class="container beta-relative">
             <div class="pull-left">
-                <a href="${pageContext.request.contextPath}/home.htm" id="logo"><img src="${pageContext.request.contextPath}/${logo}" width="200" alt=""></a>
+                <a href="${pageContext.request.contextPath}/home.htm" id="logo"><img src="${pageContext.request.contextPath}/resources/Home/images/logo-cake.png" width="200" alt=""></a>
             </div>
             <div class="pull-right beta-components space-left ov">
                 <div class="space10">&nbsp;</div>
