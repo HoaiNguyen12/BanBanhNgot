@@ -58,7 +58,7 @@ public class ProductDAO {
                   pr.setName_Pr(rs.getString("Name_pr"));
                   pr.setId_Pr(rs.getInt("id_pr"));
                   pr.setId_Type(rs.getInt("Id_Type"));
-                  pr.setImage("../resources/ImageProduct/" + rs.getString("Image"));
+                  pr.setImage("/resources/ImageProduct/" + rs.getString("Image"));
                   pr.setNew(rs.getBoolean("New"));
                   pr.setPrice(rs.getInt("Price"));
                   pr.setPrice_Old(rs.getInt("Price_Old"));
@@ -85,7 +85,7 @@ public class ProductDAO {
                   pr.setName_Pr(rs.getString("Name_pr"));
                   pr.setId_Pr(rs.getInt("id_pr"));
                   pr.setId_Type(rs.getInt("Id_Type"));
-                  pr.setImage("../resources/ImageProduct/" + rs.getString("Image"));
+                  pr.setImage("/resources/ImageProduct/" + rs.getString("Image"));
                   pr.setNew(rs.getBoolean("New"));
                   pr.setPrice(rs.getInt("Price"));
                   pr.setPrice_Old(rs.getInt("Price_Old"));

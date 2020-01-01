@@ -13,9 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import Model.Item;
 import DAO.ProductDAO;
 
@@ -27,8 +25,9 @@ public class CartController {
 		return "ShoppingCart/cart";
 	}
 
-	@RequestMapping(value = "/buy/{id}", method = RequestMethod.GET)
-	public String buy(@PathVariable("id") int id, HttpSession session) {
+	@RequestMapping(value = "/buy", method = RequestMethod.POST)
+        @ResponseBody
+	public void buy(int id, HttpSession session) {
 		ProductDAO productModel = new ProductDAO();
 		if (session.getAttribute("cart") == null) {
 			List<Item> cart = new ArrayList<Item>();
@@ -45,7 +44,13 @@ public class CartController {
 			}
 			session.setAttribute("cart", cart);
 		}
-		return "redirect:/cart/index";
+                if (session.getAttribute("total") == null) session.setAttribute("total", 1);
+                else {
+                    String i = session.getAttribute("total").toString();
+                    session.setAttribute("total", Integer.parseInt(i) + 1);
+                }
+                
+		
 	}
 
 	@RequestMapping(value = "/cart/remove/{id}", method = RequestMethod.GET)
@@ -55,7 +60,9 @@ public class CartController {
 		int index = this.exists(id, cart);
 		cart.remove(index);
 		session.setAttribute("cart", cart);
-		return "redirect:/cart";
+                String i = session.getAttribute("total").toString();
+                session.setAttribute("total", Integer.parseInt(i) - cart.get(index).getQuantity());
+		return "redirect:/cart.htm";
 	}
 
 	private int exists(int id, List<Item> cart) {
@@ -66,5 +73,5 @@ public class CartController {
 		}
 		return -1;
 	}
-
+        
 }

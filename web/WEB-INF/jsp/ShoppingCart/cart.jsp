@@ -55,37 +55,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in lst)
-                     {
+                    
+                     <c:forEach var="item" items="${sessionScope.cart}">
                         <tr class="cart_item">
                             <td class="product-name">
                                 <div class="media">
                                     <div class="media-body">
-                                        <p class="font-large table-title">@item.name</p>
+                                        <p class="font-large table-title">${item.getProduct().getName_Pr()}</p>
                                     </div>
                                 </div>
                             </td>
                             <td class="">
-                               <img src="${pageContext.request.contextPath}/${item.getImge()}"  width="80" height="60"/>
+                               <img src="${pageContext.request.contextPath}/${item.getProduct().getImage()}"  width="80" height="60"/>
                             </td>
                             <td class="product-price">
-                                <span class="amount">@item.price</span>
+                                <span class="amount">${item.getProduct().getPrice()}</span>
                             </td>
-                            @using (Html.BeginForm("Update", "ShoppingCart", new { @id = item.id }))
-                             {
-                                <td class="product-quantity">@Html.TextBox("txtSoLuong", item.amount)</td>
+                            
+                
+                                <td class="product-quantity">
+                                    <input type="number" value="${item.getQuantity()}" id="pro_${item.getQuantity()}"/>
+                                </td>
                                 <td class="product-price">
-                                    <span class="amount">@(item.amount*item.price)</span>
+                                    <span class="amount">${item.getProduct().getPrice() * item.getQuantity()}</span>
                                 </td>
                                 <td>
                                     <input type="submit" value="Cập nhật" style="width:100px; height:30px" />
                                 </td>
-                             }
+                
+                                
                             <td class="product-remove">
-                                <a href="/ShoppingCart/Remove/@item.id" class="remove" title="Remove this item"><i class="glyphicon glyphicon-remove"></i></a>
+                                <a href="${pageContext.request.contextPath}/cart/remove/${item.getProduct().getId_Pr()}.htm" class="remove" title="Remove this item"><i class="glyphicon glyphicon-remove"></i></a>
                             </td>
                         </tr>
-                        }
+            </c:forEach>
+
                     </tbody>
             </table>
             <!-- End of Shop Table Products -->

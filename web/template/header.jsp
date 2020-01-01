@@ -51,7 +51,7 @@
                         }
                     }-->
                     <div class="cart">
-                        <a href="/ShoppingCart/Cart"><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i> Giỏ hàng(@total) </a>
+                        <a href="${pageContext.request.contextPath}/cart.htm"><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i> Giỏ hàng(<p id="total">${sessionScope.total != null ? sessionScope.total : 0})</p> </a>
                     </div> <!-- .cart -->
                 </div>
             </div>

@@ -22,6 +22,8 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/Home/css/animate.css">
         <link rel="stylesheet" title="style" href="${pageContext.request.contextPath}/resources/Home/css/huong-style.css">
         <link href="${pageContext.request.contextPath}/resources/PagedList.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     </head>
     <body>
         <%@ include file="/template/header.jsp" %>
@@ -53,8 +55,8 @@
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
-                                            <a class="add-to-cart pull-left" href="/detail/@item.ID_PR"><i class="glyphicon glyphicon-shopping-cart"></i></a>
-                                            <a class="beta-btn primary" href="detail/${item.getId_Pr()}.htm">Xem chi tiết  <i class="glyphicon glyphicon-chevron-right"></i></a>
+                                            <a class="add-to-cart pull-left" onClick="addToCart(${item.getId_Pr()});><i class="glyphicon glyphicon-shopping-cart"></i></a>
+                                            <a class="beta-btn primary" href="${pageContext.request.contextPath}/detail/${item.getId_Pr()}.htm">Xem chi tiết  <i class="glyphicon glyphicon-chevron-right"></i></a>
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
@@ -90,7 +92,7 @@
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
-                                            <a class="add-to-cart pull-left" href="/ShoppingCart/Add/@item.ID_PR"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+                                            <a class="add-to-cart pull-left" onClick="addToCart(${item.getId_Pr()});"><i class="glyphicon glyphicon-shopping-cart"></i></a>
                                             <a class="beta-btn primary" href="${hot.getImage()}">Xem chi tiết <i class="glyphicon glyphicon-chevron-right"></i></a>
                                             <div class="clearfix"></div>
                                         </div>
@@ -111,5 +113,20 @@
     </div> <!-- #content -->
 </div>
         <jsp:include page="/template/footer.jsp"></jsp:include>
+        <script type="text/javascript">
+            function addToCart(id)
+            {
+                debugger
+                $.ajax ({ 
+                        url: '/buy', 
+                        type: 'POST', 
+                        dataType: 'json',
+                        data : '{"id":"'+ id +'"}"',
+                        complete: function(status){
+                             $('#total').text(sessionScope.total);			
+                        }
+                }); 
+            }
+        </script>
     </body>
 </html>
