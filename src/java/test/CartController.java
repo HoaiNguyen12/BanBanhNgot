@@ -16,18 +16,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import Model.Item;
 import DAO.ProductDAO;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.ui.Model; 
 
 @Controller
 public class CartController {
-
+        private static int total = 0;
 	@RequestMapping(value = "/cart",method = RequestMethod.GET)
 	public String index() {
 		return "ShoppingCart/cart";
 	}
 
-	@RequestMapping(value = "/buy", method = RequestMethod.POST)
-        @ResponseBody
-	public void buy(int id, HttpSession session) {
+	@RequestMapping(value = "/buy", method = RequestMethod.GET)
+	public void buy(int id, HttpSession session, Model model) {
 		ProductDAO productModel = new ProductDAO();
 		if (session.getAttribute("cart") == null) {
 			List<Item> cart = new ArrayList<Item>();
@@ -50,7 +52,16 @@ public class CartController {
                     session.setAttribute("total", Integer.parseInt(i) + 1);
                 }
                 
-		
+	}
+        
+        @RequestMapping(value="/cart/items/count", method=RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getCartItemCount(HttpSession session, 
+	                                            Model model)
+	{
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("count", total);
+		return map;
 	}
 
 	@RequestMapping(value = "/cart/remove/{id}", method = RequestMethod.GET)

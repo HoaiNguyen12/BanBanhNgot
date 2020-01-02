@@ -11,6 +11,7 @@ package test;
  */
 //import org.springframework.web.servlet.mvc.Controller;
 import DAO.ConnectDB;
+import Model.Item;
 import Model.User;
 import org.springframework.web.servlet.ModelAndView; 
 import javax.servlet.ServletException;
@@ -25,6 +26,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.ui.ModelMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -37,14 +41,23 @@ public class LoginController  {
         return "/Account/login";
     }
     @RequestMapping(value= "/check", method = RequestMethod.POST)
-    public String checkLogin(@ModelAttribute("User") User us){
+    public String checkLogin(@ModelAttribute("User") User us, HttpSession session){
         try {
             Connection connection = ConnectDB.getConnection();
             Statement stmt = ConnectDB.getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("select * from users");
+            ResultSet rs = stmt.executeQuery("select * from users where email like '" + us.getEmail() + "' and password_ like '" + us.getPassword() + "'");
             while (rs.next()) {
                   if(rs.getString("EMAIL").equalsIgnoreCase(us.getEmail()) && rs.getString("PASSWORD_").equals(us.getPassword()))
+                  {
+                      User user = new User();
+                      user.setId_Us(rs.getInt("Id_Us"));
+                      user.setUserName(rs.getString("UserName"));
+                      user.setFull_Name(rs.getString("Full_Name"));
+                      user.setPassword(rs.getString("Password_"));
+                      user.setEmail(rs.getString("email"));
+                      session.setAttribute("User", user);
                       return "redirect:/home.htm";
+                  }
             }
             connection.close();
         } catch (Exception e) {

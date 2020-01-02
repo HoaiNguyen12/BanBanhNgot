@@ -55,7 +55,7 @@
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
-                                            <a class="add-to-cart pull-left" onClick="addToCart(${item.getId_Pr()});><i class="glyphicon glyphicon-shopping-cart"></i></a>
+                                            <a class="add-to-cart pull-left" onClick="addToCart(${item.getId_Pr()});"><i class="glyphicon glyphicon-shopping-cart"></i></a>
                                             <a class="beta-btn primary" href="${pageContext.request.contextPath}/detail/${item.getId_Pr()}.htm">Xem chi tiết  <i class="glyphicon glyphicon-chevron-right"></i></a>
                                             <div class="clearfix"></div>
                                         </div>
@@ -116,16 +116,29 @@
         <script type="text/javascript">
             function addToCart(id)
             {
-                debugger
                 $.ajax ({ 
-                        url: '/buy', 
-                        type: 'POST', 
-                        dataType: 'json',
-                        data : '{"id":"'+ id +'"}"',
+                        url: '${pageContext.request.contextPath}/buy.htm', 
+                        type: 'GET', 
+                        dataType: 'JSON',
+                        data : { id: id },
                         complete: function(status){
-                             $('#total').text(sessionScope.total);			
+                            console.log("OK");
+                            updateCartItemCount();		
                         }
                 }); 
+            }
+            
+            function updateCartItemCount()
+            {
+                    $.ajax ({ 
+                            url: '/cart/items/count', 
+                            type: "GET", 
+                            dataType: "json",
+                            contentType: "application/json",
+                            complete: function(responseData){ 
+                                    $('#total').text('('+responseData.responseJSON.count+')');
+                            }
+                    });
             }
         </script>
     </body>

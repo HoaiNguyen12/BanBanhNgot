@@ -18,7 +18,7 @@
                 <ul class="top-details menu-beta l-inline">
                     <li><a href="#"><i class="glyphicon glyphicon-user"></i>Tài khoản</a></li>
                     <li><a href="#">Đăng kí</a></li>
-                    <li><a href="${pageContext.request.contextPath}/login.htm">Đăng nhập</a></li>
+                    <li><a href="${pageContext.request.contextPath}/login.htm">${sessionScope.User != null ? sessionScope.User.getFull_Name() : "Đăng nhập"}</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
