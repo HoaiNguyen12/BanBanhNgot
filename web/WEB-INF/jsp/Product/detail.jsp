@@ -38,7 +38,7 @@
         </div>
         <div class="pull-right">
             <div class="beta-breadcrumb font-large">
-                <a href="home">Trang chủ</a> / <span>Thông tin chi tiết sản phẩm</span>
+                <a href="${pageContext.request.contextPath}/home.htm">Trang chủ</a> / <span>Thông tin chi tiết sản phẩm</span>
             </div>
         </div>
         <div class="clearfix"></div>

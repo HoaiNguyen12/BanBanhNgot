@@ -22,14 +22,21 @@ import org.springframework.ui.Model;
 
 @Controller
 public class CartController {
-        private static int total = 0;
 	@RequestMapping(value = "/cart",method = RequestMethod.GET)
-	public String index() {
-		return "ShoppingCart/cart";
+	public String index(Model model, HttpSession session) {
+            float tt = 0;
+            ProductDAO dao = new ProductDAO();
+            List<Item> cart = (List<Item>) session.getAttribute("cart");
+            for (int i = 0; i < cart.size(); i++) {
+		tt += cart.get(i).getProduct().getPrice()*cart.get(i).getQuantity();
+			
+		}
+            model.addAttribute("TongTien",tt);
+            return "ShoppingCart/cart";
 	}
 
-	@RequestMapping(value = "/buy", method = RequestMethod.GET)
-	public void buy(int id, HttpSession session, Model model) {
+	@RequestMapping(value = "/buy", method = RequestMethod.POST)
+	public @ResponseBody void buy(int id, HttpSession session, Model model) {
 		ProductDAO productModel = new ProductDAO();
 		if (session.getAttribute("cart") == null) {
 			List<Item> cart = new ArrayList<Item>();
@@ -51,29 +58,18 @@ public class CartController {
                     String i = session.getAttribute("total").toString();
                     session.setAttribute("total", Integer.parseInt(i) + 1);
                 }
-                
 	}
         
-        @RequestMapping(value="/cart/items/count", method=RequestMethod.GET)
-	@ResponseBody
-	public Map<String, Object> getCartItemCount(HttpSession session, 
-	                                            Model model)
-	{
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("count", total);
-		return map;
-	}
 
-	@RequestMapping(value = "/cart/remove/{id}", method = RequestMethod.GET)
-	public String remove(@PathVariable("id") int id, HttpSession session) {
+	@RequestMapping(value = "/cart/items/remove", method = RequestMethod.POST)
+	public @ResponseBody void remove(int id, HttpSession session, Model model) {
 		ProductDAO dao = new ProductDAO();
 		List<Item> cart = (List<Item>) session.getAttribute("cart");
 		int index = this.exists(id, cart);
-		cart.remove(index);
-		session.setAttribute("cart", cart);
                 String i = session.getAttribute("total").toString();
                 session.setAttribute("total", Integer.parseInt(i) - cart.get(index).getQuantity());
-		return "redirect:/cart.htm";
+		cart.remove(index);
+		session.setAttribute("cart", cart);
 	}
 
 	private int exists(int id, List<Item> cart) {

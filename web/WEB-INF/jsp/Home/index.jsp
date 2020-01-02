@@ -24,6 +24,7 @@
         <link href="${pageContext.request.contextPath}/resources/PagedList.css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     </head>
     <body>
         <%@ include file="/template/header.jsp" %>
@@ -118,28 +119,27 @@
             {
                 $.ajax ({ 
                         url: '${pageContext.request.contextPath}/buy.htm', 
-                        type: 'GET', 
+                        type: 'POST', 
                         dataType: 'JSON',
                         data : { id: id },
                         complete: function(status){
                             console.log("OK");
-                            updateCartItemCount();		
+                            Swal.fire({
+                                text: "Đã thêm vào giỏ hàng",
+                                type: "success",
+                                timer: 1000,
+                                showCancelButton: false,
+                                showConfirmButton: false
+                            });
+                            var i = parseInt($("#total").text());	
+                            i = i + 1;
+                            $("#total").text(i);
+                            
                         }
                 }); 
             }
             
-            function updateCartItemCount()
-            {
-                    $.ajax ({ 
-                            url: '/cart/items/count', 
-                            type: "GET", 
-                            dataType: "json",
-                            contentType: "application/json",
-                            complete: function(responseData){ 
-                                    $('#total').text('('+responseData.responseJSON.count+')');
-                            }
-                    });
-            }
+            
         </script>
     </body>
 </html>

@@ -21,6 +21,25 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/Home/css/animate.css">
         <link rel="stylesheet" title="style" href="${pageContext.request.contextPath}/resources/Home/css/huong-style.css">
         <link href="${pageContext.request.contextPath}/resources/PagedList.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript">
+            function Remove(id) {
+                $.ajax({
+                    url: '${pageContext.request.contextPath}/cart/items/remove.htm',
+                    type: 'POST', 
+                    dataType: 'JSON',
+                    data : { id: id },
+                    complete: function(response) {
+                            $('#' + id).remove();
+                            var a = $('#TongTien').text();
+                            var tt = parseFloat(a);
+                            $('#TongTien').text(tt - parseFloat($('#tt_' + id).text()));
+                            
+                    }
+                });
+            }
+        </script>
     </head>
     <body>
         <%@ include file="/template/header.jsp" %>
@@ -57,7 +76,7 @@
                 <tbody>
                     
                      <c:forEach var="item" items="${sessionScope.cart}">
-                        <tr class="cart_item">
+                        <tr class="cart_item" id="${item.getProduct().getId_Pr()}">
                             <td class="product-name">
                                 <div class="media">
                                     <div class="media-body">
@@ -77,7 +96,7 @@
                                     <input type="number" value="${item.getQuantity()}" id="pro_${item.getQuantity()}"/>
                                 </td>
                                 <td class="product-price">
-                                    <span class="amount">${item.getProduct().getPrice() * item.getQuantity()}</span>
+                                    <span id="tt_${item.getProduct().getId_Pr()}" class="amount">${item.getProduct().getPrice() * item.getQuantity()}</span>
                                 </td>
                                 <td>
                                     <input type="submit" value="Cập nhật" style="width:100px; height:30px" />
@@ -85,7 +104,7 @@
                 
                                 
                             <td class="product-remove">
-                                <a href="${pageContext.request.contextPath}/cart/remove/${item.getProduct().getId_Pr()}.htm" class="remove" title="Remove this item"><i class="glyphicon glyphicon-remove"></i></a>
+                                <a onClick="Remove(${item.getProduct().getId_Pr()});" class="remove" title="Remove this item"><i class="glyphicon glyphicon-remove"></i></a>
                             </td>
                         </tr>
             </c:forEach>
@@ -96,7 +115,7 @@
         </div>
         <!-- Cart Collaterals -->
        
-            <div class="cart-totals pull-left" style="width:300px;height:50px;"><p clas="123" style="margin-top:15px; font-size:16px;">Tổng đơn hàng: @totalMoney</p></div>
+        <div class="cart-totals pull-left" style="width:300px;height:50px;"><p clas="123" style="margin-top:15px; font-size:16px;">Tổng đơn hàng: <p id="tongtien">${TongTien}</p></div>
              <a href="/ShoppingCart/Payment" class="beta-btn primary text-center" style="margin-top:35px; margin-left:200px">Đặt hàng <i class="glyphicon glyphicon-chevron-right"></i></a>
            
                 <!-- End of Cart Collaterals -->
@@ -105,5 +124,6 @@
     </div> <!-- #content -->
 </div>
         <%@ include file="/template/footer.jsp" %>
+        
     </body>
 </html>
