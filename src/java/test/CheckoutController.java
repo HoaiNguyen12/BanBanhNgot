@@ -52,9 +52,9 @@ public class CheckoutController {
         cus.setPhone_Cus(sdt);
         cusd.addCustomer(cus);
 
-        Statement stmt = ConnectDB.getConnection().createStatement();
-        ResultSet rs = stmt.executeQuery("select * from CUSTOMER where email_cus like '"
-                + email + "' and phone_cus like '" + sdt+ "'");
+//        Statement stmt = ConnectDB.getConnection().createStatement();
+//        ResultSet rs = stmt.executeQuery("select * from CUSTOMER where email_cus like '"
+//                + email + "' and phone_cus like '" + sdt+ "'");
 
         Bill bill = new Bill();
         BillDAO billdao = new BillDAO();
@@ -62,7 +62,7 @@ public class CheckoutController {
         if (cart == null) {
             cart = new ArrayList<Item>();
         }
-        bill.setId_Cus(rs.getInt("ID_CUS"));
+        bill.setId_Cus(cus.getId_Cus());
         bill.setDate_Order(new java.sql.Date(System.currentTimeMillis()));
         bill.setPayment(pay);
         bill.setNote_Bill(note);
