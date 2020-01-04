@@ -27,15 +27,16 @@
             function Remove(id) {
                 $.ajax({
                     url: '${pageContext.request.contextPath}/cart/items/remove.htm',
-                    type: 'POST', 
-                    dataType: 'JSON',
+                    type: 'GET', 
+                    dataType: 'json',
                     data : { id: id },
+                    contentType : "application/json",
                     complete: function(response) {
                             $('#' + id).remove();
-                            var a = $('#TongTien').text();
-                            var tt = parseFloat(a);
-                            $('#TongTien').text(tt - parseFloat($('#tt_' + id).text()));
-                            
+                            var ob = JSON.parse(response.responseText);
+                            console.log(ob.TongTien);
+                            $('#tongtien').text(ob.TongTien);
+                            $('#total').text(ob.total);
                     }
                 });
             }
@@ -85,18 +86,18 @@
                                 </div>
                             </td>
                             <td class="">
-                               <img src="${pageContext.request.contextPath}/${item.getProduct().getImage()}"  width="80" height="60"/>
+                               <img src="${pageContext.request.contextPath}/${item.getProduct().getImage()}"  width="60" height="60"/>
                             </td>
                             <td class="product-price">
-                                <span class="amount">${item.getProduct().getPrice()}</span>
+                                <span class="amount"><p id="pr_${item.getProduct().getPrice()}">${item.getProduct().getPrice()}</p></span>
                             </td>
                             
                 
                                 <td class="product-quantity">
-                                    <input type="number" value="${item.getQuantity()}" id="pro_${item.getQuantity()}"/>
+                                    <input type="number" id="sl_${item.getProduct().getId_Pr()}" value="${item.getQuantity()}" id="pro_${item.getQuantity()}"/>
                                 </td>
                                 <td class="product-price">
-                                    <span id="tt_${item.getProduct().getId_Pr()}" class="amount">${item.getProduct().getPrice() * item.getQuantity()}</span>
+                                    <span  class="amount"><p id="tt_${item.getProduct().getId_Pr()}">${item.getProduct().getPrice() * item.getQuantity()}<p></span>
                                 </td>
                                 <td>
                                     <input type="submit" value="Cập nhật" style="width:100px; height:30px" />

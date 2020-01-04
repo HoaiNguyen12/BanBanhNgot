@@ -16,8 +16,8 @@ public class Product implements Serializable{
     private int Id_Type;
     private String Name_Pr;
     private String Unit;
-    private float Price;
-    private float Price_Old;
+    private int Price;
+    private int Price_Old;
     private String Descriptions;
     private String Image;
     private boolean New;
@@ -59,7 +59,7 @@ public class Product implements Serializable{
         return Price;
     }
 
-    public void setPrice(float Price) {
+    public void setPrice(int Price) {
         this.Price = Price;
     }
 
@@ -67,7 +67,7 @@ public class Product implements Serializable{
         return Price_Old;
     }
 
-    public void setPrice_Old(float Price_Old) {
+    public void setPrice_Old(int Price_Old) {
         this.Price_Old = Price_Old;
     }
 

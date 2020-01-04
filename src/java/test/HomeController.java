@@ -9,6 +9,7 @@ import DAO.ProductDAO;
 import DAO.TypeProductDAO;
 import Model.Product;
 import Model.TypeProduct;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,13 +24,28 @@ public class HomeController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(Model model){
         ProductDAO prDAO = new ProductDAO();
-        List<Product> list = prDAO.getAllProducts("");
+        List<Product> list = prDAO.getProductByPage(1,"");
         model.addAttribute("list",list);
-        list = prDAO.getAllProducts("where hot = 1");
+        list = prDAO.getProductByPage(1,"where hot = 1");
         model.addAttribute("listHot",list);
         TypeProductDAO Tdao = new TypeProductDAO();
         List<TypeProduct> lType = Tdao.getAllType();
         model.addAttribute("lType",lType);
+        model.addAttribute("count", prDAO.countPage(""));
+        
+        model.addAttribute("offset", 12);
         return "Home/index";
     }
+    @RequestMapping(value="/home/new")    
+    public String edit(int page,Model m){  
+        ProductDAO prDAO = new ProductDAO();  
+        int total=12;    
+        if(page==1){}    
+        else{    
+            page=(page-1)*total+1;    
+        }     
+        List<Product> list=prDAO.getProductByPage(page,"new");    
+          m.addAttribute("msg", list);  
+        return "viewemp";    
+    }    
 }

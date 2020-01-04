@@ -39,7 +39,7 @@ public class ProductController {
     
     @RequestMapping(value="products/{id}",method=RequestMethod.GET)    
     public String productsOfType(@PathVariable("id") int id, Model m){  
-        List<Product> list = dao.getAllProducts(" where id_type = " + id);
+        List<Product> list = dao.getProductByPage(1,"where id_type = " + id);
         m.addAttribute("list",list);   
         List<TypeProduct> lType = Tdao.getAllType();
         m.addAttribute("lType",lType);  

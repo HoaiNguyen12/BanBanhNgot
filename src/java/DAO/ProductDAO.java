@@ -17,12 +17,13 @@ import java.util.List;
  * @author Admin
  */
 public class ProductDAO {
-    public List<Product> getAllProducts(String type){
+    public List<Product> getProductByPage(int page,String type){
         List<Product> list = new ArrayList<Product>();
         try {
             Connection connection = ConnectDB.getConnection();
             Statement stmt = ConnectDB.getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("select top 12 * from product "  + type);
+            ResultSet rs = stmt.executeQuery("select * from (select ROW_NUMBER() OVER(ORDER BY price) as ind, *\n" +
+                                             "from Product " + type +") as a where ind >= "+page+" and ind <= " + (page + 11));
             while (rs.next()) {
                   Product pr = new Product();
                   pr.setDescriptions(rs.getString("Descriptions"));
@@ -98,5 +99,17 @@ public class ProductDAO {
             System.out.println(e);
         }
         return new Product();
+    }
+    public int countPage(String type){
+        int count = 0;
+        try{
+        Connection connection = ConnectDB.getConnection();
+            Statement stmt = ConnectDB.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery("select count(*) as cou from product " + type);
+            count = rs.getInt("cou");
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+            return count;
     }
 }

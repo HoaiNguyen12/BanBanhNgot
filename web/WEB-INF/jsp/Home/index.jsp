@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="tag" uri="/WEB-INF/tlds/customTaglib.tld" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -101,11 +102,8 @@
                                 </div>
                             </c:forEach>
                         </div>
-                        <div class="row">
-                            <div class="pagination">
-                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
-                            </div>
-                        </div>
+                        
+                            <tag:paginate max="10" offset="${offset}" count="${count}" uri="/persons" next="&raquo;" previous="&laquo;"/>
                         <div class="space40">&nbsp;</div>
                     </div> <!-- .beta-products-list -->
                 </div>
@@ -119,7 +117,7 @@
             {
                 $.ajax ({ 
                         url: '${pageContext.request.contextPath}/buy.htm', 
-                        type: 'POST', 
+                        type: 'GET', 
                         dataType: 'JSON',
                         data : { id: id },
                         complete: function(status){
