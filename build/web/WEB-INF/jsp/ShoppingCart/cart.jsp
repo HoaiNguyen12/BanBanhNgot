@@ -21,6 +21,26 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/Home/css/animate.css">
         <link rel="stylesheet" title="style" href="${pageContext.request.contextPath}/resources/Home/css/huong-style.css">
         <link href="${pageContext.request.contextPath}/resources/PagedList.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript">
+            function Remove(id) {
+                $.ajax({
+                    url: '${pageContext.request.contextPath}/cart/items/remove.htm',
+                    type: 'GET', 
+                    dataType: 'json',
+                    data : { id: id },
+                    contentType : "application/json",
+                    complete: function(response) {
+                            $('#' + id).remove();
+                            var ob = JSON.parse(response.responseText);
+                            console.log(ob.TongTien);
+                            $('#tongtien').text(ob.TongTien);
+                            $('#total').text(ob.total);
+                    }
+                });
+            }
+        </script>
     </head>
     <body>
         <%@ include file="/template/header.jsp" %>
@@ -55,44 +75,48 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in lst)
-                     {
-                        <tr class="cart_item">
+                    
+                     <c:forEach var="item" items="${sessionScope.cart}">
+                        <tr class="cart_item" id="${item.getProduct().getId_Pr()}">
                             <td class="product-name">
                                 <div class="media">
                                     <div class="media-body">
-                                        <p class="font-large table-title">@item.name</p>
+                                        <p class="font-large table-title">${item.getProduct().getName_Pr()}</p>
                                     </div>
                                 </div>
                             </td>
                             <td class="">
-                               <img src="${pageContext.request.contextPath}/${item.getImge()}"  width="80" height="60"/>
+                               <img src="${pageContext.request.contextPath}/${item.getProduct().getImage()}"  width="60" height="60"/>
                             </td>
                             <td class="product-price">
-                                <span class="amount">@item.price</span>
+                                <span class="amount"><p id="pr_${item.getProduct().getPrice()}">${item.getProduct().getPrice()}</p></span>
                             </td>
-                            @using (Html.BeginForm("Update", "ShoppingCart", new { @id = item.id }))
-                             {
-                                <td class="product-quantity">@Html.TextBox("txtSoLuong", item.amount)</td>
+                            
+                
+                                <td class="product-quantity">
+                                    <input type="number" id="sl_${item.getProduct().getId_Pr()}" value="${item.getQuantity()}" id="pro_${item.getQuantity()}"/>
+                                </td>
                                 <td class="product-price">
-                                    <span class="amount">@(item.amount*item.price)</span>
+                                    <span  class="amount"><p id="tt_${item.getProduct().getId_Pr()}">${item.getProduct().getPrice() * item.getQuantity()}<p></span>
                                 </td>
                                 <td>
                                     <input type="submit" value="Cập nhật" style="width:100px; height:30px" />
                                 </td>
-                             }
+                
+                                
                             <td class="product-remove">
-                                <a href="/ShoppingCart/Remove/@item.id" class="remove" title="Remove this item"><i class="glyphicon glyphicon-remove"></i></a>
+                                <a onClick="Remove(${item.getProduct().getId_Pr()});" class="remove" title="Remove this item"><i class="glyphicon glyphicon-remove"></i></a>
                             </td>
                         </tr>
-                        }
+            </c:forEach>
+
                     </tbody>
             </table>
             <!-- End of Shop Table Products -->
         </div>
         <!-- Cart Collaterals -->
        
-            <div class="cart-totals pull-left" style="width:300px;height:50px;"><p clas="123" style="margin-top:15px; font-size:16px;">Tổng đơn hàng: @totalMoney</p></div>
+        <div class="cart-totals pull-left" style="width:300px;height:50px;"><p clas="123" style="margin-top:15px; font-size:16px;">Tổng đơn hàng: <p id="tongtien">${TongTien}</p></div>
              <a href="/ShoppingCart/Payment" class="beta-btn primary text-center" style="margin-top:35px; margin-left:200px">Đặt hàng <i class="glyphicon glyphicon-chevron-right"></i></a>
            
                 <!-- End of Cart Collaterals -->
@@ -101,5 +125,6 @@
     </div> <!-- #content -->
 </div>
         <%@ include file="/template/footer.jsp" %>
+        
     </body>
 </html>

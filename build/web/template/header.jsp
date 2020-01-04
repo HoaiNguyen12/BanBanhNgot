@@ -18,7 +18,7 @@
                 <ul class="top-details menu-beta l-inline">
                     <li><a href="#"><i class="glyphicon glyphicon-user"></i>Tài khoản</a></li>
                     <li><a href="#">Đăng kí</a></li>
-                    <li><a href="${pageContext.request.contextPath}/login.htm">Đăng nhập</a></li>
+                    <li><a href="${pageContext.request.contextPath}/login.htm">${sessionScope.User != null ? sessionScope.User.getFull_Name() : "Đăng nhập"}</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -27,7 +27,7 @@
     <div class="header-body">
         <div class="container beta-relative">
             <div class="pull-left">
-                <a href="${pageContext.request.contextPath}/home.htm" id="logo"><img src="${pageContext.request.contextPath}/${logo}" width="200" alt=""></a>
+                <a href="${pageContext.request.contextPath}/home.htm" id="logo"><img src="${pageContext.request.contextPath}/resources/Home/images/logo-cake.png" width="200" alt=""></a>
             </div>
             <div class="pull-right beta-components space-left ov">
                 <div class="space10">&nbsp;</div>
@@ -51,7 +51,7 @@
                         }
                     }-->
                     <div class="cart">
-                        <a href="/ShoppingCart/Cart"><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i> Giỏ hàng(@total) </a>
+                        <a href="${pageContext.request.contextPath}/cart.htm"><i class="glyphicon glyphicon-shopping-cart" style="font-size:15px"></i> Giỏ hàng(<p id="total">${sessionScope.total != null ? sessionScope.total : 0}</p>) </a>
                     </div> <!-- .cart -->
                 </div>
             </div>
