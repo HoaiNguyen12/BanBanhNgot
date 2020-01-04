@@ -3,14 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/test/ProductController.java</file>
-            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/WEB-INF/jsp/Product/detail.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/WEB-INF/jsp/Account/login.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/test/HomeController.java</file>
-            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/template/header.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/WEB-INF/jsp/Home/index.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/DAO/ProductDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/test/LoginController.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/test/LoginController.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/test/SignUpController.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/DAO/BillDetailDAO.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/test/CartController.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/DAO/CustomerDAO.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/DAO/BillDAO.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/web/WEB-INF/jsp/ShoppingCart/cart.jsp</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/test/CheckoutController.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/web/WEB-INF/jsp/Account/login.jsp</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/web/WEB-INF/jsp/Account/SignUp.jsp</file>
         </group>
     </open-files>
 </project-private>

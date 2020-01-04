@@ -29,12 +29,11 @@ public class CartController {
             List<Item> cart = (List<Item>) session.getAttribute("cart");
             for (int i = 0; i < cart.size(); i++) {
 		tt += cart.get(i).getProduct().getPrice()*cart.get(i).getQuantity();
-			
 		}
             model.addAttribute("TongTien",tt);
             return "ShoppingCart/cart";
 	}
-
+        
 	@RequestMapping(value = "/buy", method = RequestMethod.POST)
 	public @ResponseBody void buy(int id, HttpSession session, Model model) {
 		ProductDAO productModel = new ProductDAO();
