@@ -117,7 +117,7 @@
         <!-- Cart Collaterals -->
        
         <div class="cart-totals pull-left" style="width:300px;height:50px;"><p clas="123" style="margin-top:15px; font-size:16px;">Tổng đơn hàng: <p id="tongtien">${TongTien}</p></div>
-             <a href="/ShoppingCart/Payment" class="beta-btn primary text-center" style="margin-top:35px; margin-left:200px">Đặt hàng <i class="glyphicon glyphicon-chevron-right"></i></a>
+             <a href="${pageContext.request.contextPath}/checkout.htm" class="beta-btn primary text-center" style="margin-top:35px; margin-left:200px">Đặt hàng <i class="glyphicon glyphicon-chevron-right"></i></a>
            
                 <!-- End of Cart Collaterals -->
             <div class="clearfix"></div>

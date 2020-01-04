@@ -35,10 +35,18 @@ public class CartController {
             for (int i = 0; i < cart.size(); i++) {
 		tt += cart.get(i).getProduct().getPrice()*cart.get(i).getQuantity();
 		}
+<<<<<<< HEAD
             return tt;
         }
 
 	@RequestMapping(value = "/buy", method = RequestMethod.GET)
+=======
+            model.addAttribute("TongTien",tt);
+            return "ShoppingCart/cart";
+	}
+        
+	@RequestMapping(value = "/buy", method = RequestMethod.POST)
+>>>>>>> be7e8b5b78c111d8f461791586a24a6fdc013c10
 	public @ResponseBody void buy(int id, HttpSession session, Model model) {
 		ProductDAO productModel = new ProductDAO();
 		if (session.getAttribute("cart") == null) {

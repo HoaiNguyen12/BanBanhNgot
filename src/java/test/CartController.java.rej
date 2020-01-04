@@ -1,0 +1,26 @@
+diff a/src/java/test/CartController.java b/src/java/test/CartController.java	(rejected hunks)
+@@ -16,18 +16,20 @@
+ import org.springframework.web.bind.annotation.*;
+ import Model.Item;
+ import DAO.ProductDAO;
++import java.util.HashMap;
++import java.util.Map;
++import org.springframework.ui.Model; 
+ 
+ @Controller
+ public class CartController {
+-
++        private static int total = 0;
+ 	@RequestMapping(value = "/cart",method = RequestMethod.GET)
+ 	public String index() {
+ 		return "ShoppingCart/cart";
+ 	}
+ 
+-	@RequestMapping(value = "/buy", method = RequestMethod.POST)
+-        @ResponseBody
+-	public void buy(int id, HttpSession session) {
++	@RequestMapping(value = "/buy", method = RequestMethod.GET)
++	public void buy(int id, HttpSession session, Model model) {
+ 		ProductDAO productModel = new ProductDAO();
+ 		if (session.getAttribute("cart") == null) {
+ 			List<Item> cart = new ArrayList<Item>();

@@ -1,0 +1,9 @@
+diff a/src/java/test/LoginController.java b/src/java/test/LoginController.java	(rejected hunks)
+@@ -11,6 +11,7 @@
+  */
+ //import org.springframework.web.servlet.mvc.Controller;
+ import DAO.ConnectDB;
++import Model.Item;
+ import Model.User;
+ import org.springframework.web.servlet.ModelAndView; 
+ import javax.servlet.ServletException;

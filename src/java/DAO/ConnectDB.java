@@ -16,8 +16,8 @@ import java.sql.SQLException;
 public class ConnectDB {
     private static final String DB_URL = "jdbc:sqlserver://localhost:1433;" + "databaseName=WebBanhNgot;";
 
-    private static final String USER_NAME = "hoai";
-    private static final String PASSWORD = "hoai112";
+    private static final String USER_NAME = "sa";
+    private static final String PASSWORD = "1234";
 
     public static Connection getConnection() {
             Connection conn = null;

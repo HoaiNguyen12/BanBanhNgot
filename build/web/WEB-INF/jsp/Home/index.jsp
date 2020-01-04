@@ -57,7 +57,7 @@
                                             </p>
                                         </div>
                                         <div class="single-item-caption">
-                                            <a class="add-to-cart pull-left" onClick="addToCart(${item.getId_Pr()});"><i class="glyphicon glyphicon-shopping-cart"></i></a>
+                                            <a class="add-to-cart pull-left" onClick="addToCart(${item.getId_Pr()});><i class="glyphicon glyphicon-shopping-cart"></i></a>
                                             <a class="beta-btn primary" href="${pageContext.request.contextPath}/detail/${item.getId_Pr()}.htm">Xem chi tiết  <i class="glyphicon glyphicon-chevron-right"></i></a>
                                             <div class="clearfix"></div>
                                         </div>

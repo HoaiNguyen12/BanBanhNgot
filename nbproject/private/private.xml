@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/test/ProductController.java</file>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/WEB-INF/jsp/Home/products.jsp</file>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/WEB-INF/jsp/ShoppingCart/cart.jsp</file>
@@ -10,6 +11,18 @@
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/test/CartController.java</file>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/web/WEB-INF/jsp/Home/index.jsp</file>
             <file>file:/C:/Users/Admin/Documents/BanBanhNgot/src/java/DAO/ProductDAO.java</file>
+=======
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/test/LoginController.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/test/SignUpController.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/DAO/BillDetailDAO.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/test/CartController.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/DAO/CustomerDAO.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/DAO/BillDAO.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/web/WEB-INF/jsp/ShoppingCart/cart.jsp</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/src/java/test/CheckoutController.java</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/web/WEB-INF/jsp/Account/login.jsp</file>
+            <file>file:/C:/Users/Huong/Desktop/New%20folder/BanBanhNgot/web/WEB-INF/jsp/Account/SignUp.jsp</file>
+>>>>>>> be7e8b5b78c111d8f461791586a24a6fdc013c10
         </group>
     </open-files>
 </project-private>
